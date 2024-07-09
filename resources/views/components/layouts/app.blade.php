@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
-
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" >
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +11,10 @@
    
 </head>
 
-<body class=" flex mx-auto bg-green-50 h-full">
+<body class=" bg-green-50  w-full">
 
     {{ $slot }}
+
 </body>
 
 </html>
