@@ -1,5 +1,5 @@
 <div class=" pt-10 -6 w-full">
-    {{-- In work, do what you enjoy. --}}
+    {{-- Success is as dangerous as failure. --}}
      <header class="flex justify-start w-full space-x-2 items-center pl-3">
    <span><a href="/" wire:navigate>
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -11,7 +11,7 @@
 </a></span>
 
 <span class=" text-slate-600 text-2xl">
-   My Cards
+    Get Rewards
 </span>
 </header>
 </div>
