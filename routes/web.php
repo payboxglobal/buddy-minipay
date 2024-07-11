@@ -16,6 +16,7 @@ use App\Livewire\Transaction;
 use App\Livewire\TransactionStatus;
 use App\Livewire\VirtualCard;
 use App\Livewire\Reward;
+use App\Livewire\Profile;
 
 
 
@@ -41,6 +42,7 @@ Route::get('transaction_status', TransactionStatus::class);
 Route::get('gift_card', GiftCard::class);
 Route::get('virtual_card', VirtualCard::class);
 Route::get('pay_merchant', MerchantPay::class);
+Route::get('profile', Profile::class);
 
 
 

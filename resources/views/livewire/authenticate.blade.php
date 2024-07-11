@@ -19,6 +19,14 @@
     <button   type="button" wire:click="login()"> Login</button>
     <button  type="button" wire:click="logout()"> Logout</button>
 
+    <div x-data="{ open: false }">
+        <button @click="open = ! open">Expands</button>
+    
+        <div x-show="open" x-transition.duration.500ms>
+            Content...
+        </div>
+    </div>
+
     </form>
  
 </main>

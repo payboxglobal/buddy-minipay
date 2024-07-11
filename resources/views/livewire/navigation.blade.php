@@ -6,9 +6,11 @@
             <div class="flex justify-between h-16">
 
                <!-- Hamburger -->
+                
                 <div class="-mr-2 flex items-center sm:hidden">
                     <button @click="open = ! open"
                         class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 focus:outline-none transition">
+                    <a href="profile" wire:navigate>
                         <svg class="h-10 w-10 text-gray-500" stroke="currentColor" fill="none" viewBox="0 0 24 24" class="size-4">
 
                             <path v-bind:class="{'hidden': open, 'inline-flex': open }" fill-rule="evenodd"
@@ -20,9 +22,11 @@
                                 clip-rule="evenodd" />
                         </svg>
 
-
+                        </a>
                     </button>
                 </div>
+               
+
                 <div class="flex">
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center text-xl  text-gray-400">

@@ -11,7 +11,7 @@
    
 </head>
 
-<body class=" bg-green-50  w-full">
+<body class=" bg-green-50  w-full ">
 
     {{ $slot }}
 

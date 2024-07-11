@@ -1,5 +1,5 @@
 <div class="">
-
+<header>
     <div class=" bg-slate-800 rounded-b-2xl shadow border-0">
 
         <livewire:navigation />
@@ -15,18 +15,22 @@
         </div>
     </div>
 
+    </header>
 
-    <div class="flex justify-around w-full pt-4">
-        <div class="flex flex-col items-center p-12 bg-red-300  rounded-lg ">
-    <a href="virtual_card" wire:navigate>
+
+    <main class="px-2">
+
+    <div class="flex justify-around w-full mt-4">
+        <div class="flex flex-col items-center p-10 bg-red-300  rounded-lg ">
+    <a href="virtual_card" wire:navigate x-transition>
             <div class=" text-1xl  text-white text-pretty font-bold">
                 Virtual Cards
             </div>
         </a>
         </div>
 
-        <div class="flex flex-col items-center p-12 bg-green-300 rounded-lg ">
-        <a href="gift_card" wire:navigate>
+        <div class="flex flex-col items-center p-10 bg-green-300 rounded-lg ">
+        <a href="gift_card" wire:navigate x-transition>
             <div class=" text-1xl  text-white text-pretty font-bold">
                 Gift Cards
             </div>
@@ -37,7 +41,7 @@
 
     <section class="pt-5">
     <a href="transaction" wire:navigate>
-     <div class=" flex justify-between bg-white p-6 w-full shadow-md text-lg text-slate-600">
+     <div class=" flex justify-between bg-white p-6 w-full shadow-md text-lg rounded-lg text-slate-600">
       Transactions
 
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -58,7 +62,7 @@
     @unless (session('user'))
     <section>
         <a href="login" wire:navigate>
-        <div class="bg-white p-6  shadow-md text-lg text-slate-600 mt-3 rounded-md flex items-center " x-transition>
+        <div class="bg-white p-6  shadow-md text-lg text-slate-600 mt-3 rounded-lg flex items-center " x-transition>
        
         <svg class="h-12 w-12 text-gray-500 inline-flex items-center justify-center p-2 rounded-lg focus:outline-none transition"
                 stroke="currentColor" fill="none" viewBox="0 0 24 24" class="size-4">
@@ -73,6 +77,9 @@
 </a>
     </section>
     @endunless
+
+
+</main>
 
 
 
