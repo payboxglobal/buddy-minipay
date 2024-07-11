@@ -1,6 +1,6 @@
 <div x-data default="{ open: false }">
    
-    <nav class="bg-slate-800 border-0 pt-10 text-white flex ">
+    <nav class="bg-slate-800 border-0 pt-4 text-white flex ">
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl  px-4 sm:px-6 lg:px-8 flex">
             <div class="flex justify-between h-16">
