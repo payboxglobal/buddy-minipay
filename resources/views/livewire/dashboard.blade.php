@@ -1,12 +1,12 @@
 <div class="">
 <header>
-    <div class=" bg-slate-800 rounded-b-2xl shadow border-0">
+    <div class=" bg-slate-800 rounded-b-2xl shadow border-0 mx-2">
 
         <livewire:navigation />
 
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-around  p-12 items-center">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-around  items-center">
             <h2 class="font-semibold text-xl text-white leading-tight">
-                {{  __('CUSD ') . round(1000.23, 3) }}
+                {{  __('CUSD ') . round(1000.233, 3) }}
             </h2>
 
             <h2 class="font-semibold text-xl text-white leading-tight  bg-slate-600  px-8 py-3 rounded-full">
