@@ -62,7 +62,6 @@
                 {{$amount}} </button>
 
 
-
             <button type="button"
                 class=" flex w-full justify-center bg-teal-600  mt-20 text-2xl px-10 py-3 rounded-full text-white "
                 x-on:click="get_address()">Get Address </button>
@@ -73,7 +72,7 @@
 
             <button type="button"
                 class=" flex w-full justify-center bg-teal-600  mt-20 text-2xl px-10 py-3 rounded-full text-white "
-                x-on:click="get_balance()">Pay Balance </button>
+                x-on:click="get_balance()">Get Balance </button>
         </form>
 
 
@@ -125,35 +124,83 @@
 
                             // let  address= accounts[0];
                             // return address;
-                                                    }
+                        }
 
                         // User is not using MiniPay
                     }
 
                     //return '0x99A03CF527acc798585c025068bBBa0B9e645347';
                 },
-
                 async pay_celo() {
 
-                 // Requesting account addresses
-                            let accounts = await window.ethereum.request({
-                                method: "eth_requestAccounts",
-                                params: [],
-                            });
+                    const walletClient = window.createWalletClient({
+                        chain: window.celoAlfajores,
+                        transport: window.custom(!window.ethereum)
+                    })
 
-        // Injected wallets inject all available addresses,
-                            // to comply with API Minipay injects one address but in the form of array
-                          alert(accounts[0]);
+                    alert(walletClient);
 
+                    const publicClient = window.createPublicClient({
+                        chain: window.celoAlfajores,
+                        transport: window.http()
+                    })
 
-                },
-                async get_balance() {
-                     
-                    
                     const STABLE_TOKEN_ADDRESS = "0x874069fa1eb16d44d622f2e0ca25eea172369bc1";
-                      const address =  '0x99A03CF527acc798585c025068bBBa0B9e645347';
-                    
-                     
+                    const address = '0x99A03CF527acc798585c025068bBBa0B9e645347';
+                    const receiverAddress = '0x99A03CF527acc798585c025068bBBa0B9e645347';
+                    const transferValue = 0.1;
+
+
+
+                    async function requestTransfer(tokenAddress, transferValue, tokenDecimals) {
+
+                        let hash = await client.sendTransaction({
+                            to: tokenAddress,
+                            // to: '0x765DE816845861e75A25fCA122bb6898B8B1282a' // cUSD (Mainnet)
+                            // to: '0xcebA9300f2b948710d2653dD7B07f33A8B32118C' // USDC (Mainnet)
+                            // to: '0x48065fbbe25f71c9282ddf5e1cd6d6a887483d5e' // USDT (Mainnet)
+                            data: window.encodeFunctionData({
+                                abi: window.stableTokenABI, // Token ABI can be fetched from Explorer.
+                                functionName: "transfer",
+                                args: [
+                                    receiverAddress,
+                                    // Different tokens can have different decimals, cUSD (18), USDC (6)
+                                    window.parseUnits(`${Number(transferValue)}`, tokenDecimals),
+                                ],
+                            }),
+                            // If the wallet is connected to a different network then you get an error.
+                            chain: window.celoAlfajores,
+                            // chain: celo,
+                        });
+
+                        const transaction = await window.publicClient.waitForTransactionReceipt({
+                            hash, // Transaction hash that can be used to search transaction on the explorer.
+                        });
+
+                        if (transaction.status === "success") {
+                            // Do something after transaction is successful.
+                            alert("Successfully")
+                        } else {
+                            // Do something after transaction has failed.
+                            alert("Failed")
+                        }
+                    }
+
+                    $transfer = await requestTransfer(STABLE_TOKEN_ADDRESS, 0.1, 18);
+                    alert($transfer);
+
+
+
+
+                }
+                ,
+                async get_balance() {
+
+
+                    const STABLE_TOKEN_ADDRESS = "0x874069fa1eb16d44d622f2e0ca25eea172369bc1";
+                    const address = '0x99A03CF527acc798585c025068bBBa0B9e645347';
+
+
 
                     async function checkCUSDBalance(publicClient, address) {
 
@@ -165,7 +212,7 @@
                             publicClient,
                         });
 
-                      
+
 
                         let balanceInBigNumber = await publicClient.getBalance({
                             address
@@ -183,11 +230,11 @@
                         transport: window.http(),
                     }); // Test 
 
-                     const publicClient_main = window.createPublicClient({
+                    const publicClient_main = window.createPublicClient({
                         chain: window.celo,
                         transport: window.http(),
                     }); // Test 
-                  
+
                     let balance = await checkCUSDBalance(publicClient, address); // In Ether unit
 
                     alert(balance);
